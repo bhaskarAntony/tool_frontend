@@ -6,6 +6,7 @@ import AuthContext from '../../components/context/AuthContext';
 function SignUp() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false)
 
   const { login, isAuthenticated, error, clearErrors, loading } = useContext(AuthContext);
 
@@ -30,23 +31,27 @@ function SignUp() {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true)
     const result = await login({ adminemail, password });
 
-    // if (result) {
-    //   navigate('/');
-    // }
+    if (result) {
+      setIsLoading(false)
+      navigate('/');
+    }else{
+      setIsLoading(false);
+    }
   };
 
-  // Handle authentication and error side-effects
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/'); // Redirect to the dashboard after successful login
-    }
-    if (error) {
-      alert(error.message);
-      clearErrors();
-    }
-  }, [isAuthenticated, error, navigate, clearErrors]);
+  // // Handle authentication and error side-effects
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     navigate('/'); // Redirect to the dashboard after successful login
+  //   }
+  //   if (error) {
+  //     alert(error.message);
+  //     clearErrors();
+  //   }
+  // }, [isAuthenticated, error, navigate, clearErrors]);
 
   return (
     <section className="container-fluid p-3 p-md-5 signup">
@@ -95,7 +100,7 @@ function SignUp() {
                   className="blue-btn w-100 mt-3"
                   disabled={loading}
                 >
-                  {loading ? 'Please wait...' : 'Next'}
+                  {loading || isLoading ? 'Please wait...' : 'Next'}
                 </button>
               </form>
             </div>

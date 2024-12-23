@@ -57,7 +57,7 @@ function Header() {
             <Nav.Link href="/reports" className='bg-light h-100'>Reports</Nav.Link>
           </Nav>
         <div>
-        <Avatar sx={{ bgcolor: deepPurple[500] }}>{user?.adminname[0]?.toUpperCase()}</Avatar>
+        <Avatar sx={{ bgcolor: deepPurple[500] }}>A</Avatar>
         </div>
         </Navbar.Collapse>
       </Container>

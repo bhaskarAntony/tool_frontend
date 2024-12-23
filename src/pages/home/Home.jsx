@@ -46,7 +46,7 @@ function Home() {
           setIsLoading(false)
   
           // Calculate returned and not returned counts
-          const returned = response.data.filter((txn) => txn?.returnDate).length;
+          const returned = response.data?.filter((txn) => txn?.returnDate).length;
           const notReturned = response.data?.length - returned;
   
           setReturnedCount(returned);
