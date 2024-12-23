@@ -13,7 +13,7 @@ export const MaintenanceTable = () => {
 
   const fetchLogs = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/maintenance/logs");
+      const response = await axios.get("https://tool-backendf.onrender.com/api/maintenance/logs");
       setLogs(response.data);
     } catch (error) {
       console.error("Error fetching logs:", error);
@@ -24,7 +24,7 @@ export const MaintenanceTable = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/maintenance/${id}`);
+      await axios.delete(`https://tool-backendf.onrender.com/api/maintenance/${id}`);
       fetchLogs(); // Refresh data after deletion
     } catch (error) {
       console.error("Error deleting log:", error);

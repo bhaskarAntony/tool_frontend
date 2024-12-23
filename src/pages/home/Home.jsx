@@ -40,7 +40,7 @@ function Home() {
   
     useEffect(() => {
       setIsLoading(true)
-      axios.get('http://localhost:4000/api/transactions/list')
+      axios.get('https://tool-backendf.onrender.com/api/transactions/list')
         .then((response) => {
           setTransactions(response?.data);
           setIsLoading(false)
@@ -62,7 +62,7 @@ function Home() {
       // Fetch stats data from the backend
       setIsLoading(true)
       axios
-        .get('http://localhost:4000/api/transactions/stats')
+        .get('https://tool-backendf.onrender.com/api/transactions/stats')
         .then((response) => {
           setIsLoading(false)
           setStats(response.data);
@@ -77,7 +77,7 @@ function Home() {
       // Fetch stats data from the backend
       setIsLoading(true)
       axios
-        .get('http://localhost:4000/api/weapons')
+        .get('https://tool-backendf.onrender.com/api/weapons')
         .then((response) => {
           setIsLoading(false)
           setArmouryData(response.data);
@@ -128,7 +128,7 @@ function Home() {
   };
 
   // useEffect(async()=>{
-  //     let responce = await  axios.get('http://localhost:4000/api/items')
+  //     let responce = await  axios.get('https://tool-backendf.onrender.com/api/items')
   //     .then((res)=>{
   //         console.log(res.data);
           
@@ -142,7 +142,7 @@ function Home() {
     // Fetch stats data from the backend
     setIsLoading(true)
     axios
-      .get('http://localhost:4000/api/items')
+      .get('https://tool-backendf.onrender.com/api/items')
       .then((response) => {
         setIsLoading(false)
         setAmmunitionData(response.data);

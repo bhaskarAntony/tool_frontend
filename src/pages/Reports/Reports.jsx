@@ -15,7 +15,7 @@ function Reports() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/api/weapons');
+      const response = await axios.get('https://tool-backendf.onrender.com/api/weapons');
       const weapons = response.data;
       setData({
         armoury: weapons.filter((item) => item.category === 'armoury'),

@@ -26,7 +26,7 @@ function Edit({id}) {
 
     useEffect(() => {
         // Fetch weapon data by ID from the backend
-        axios.get(`http://localhost:4000/api/weapons/single/${id}`)
+        axios.get(`https://tool-backendf.onrender.com/api/weapons/single/${id}`)
             .then(response => {
                 setWeaponData(response.data);
                 setIsIssued(response.data.isIssued); // Set the initial state of 'isIssued'
@@ -63,7 +63,7 @@ function Edit({id}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.patch(`http://localhost:4000/api/weapons/update/${id}`, weaponData)
+        axios.patch(`https://tool-backendf.onrender.com/api/weapons/update/${id}`, weaponData)
             .then(response => {
                 alert('Weapon updated successfully!');
                 navigate('/manage/armoury')

@@ -17,7 +17,7 @@ export const MaintenanceCharts = () => {
 
   const fetchChartData = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/transactions/stats");
+      const response = await axios.get("https://tool-backendf.onrender.com/api/transactions/stats");
       const stats = response.data;
 
       // Check if stats have valid data

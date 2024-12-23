@@ -56,7 +56,7 @@ function NewArmoury({title, C_type}) {
 
     const handleSubmit = (e) => {
         e.preventDefault(); //https://armoury-backend-ti9n.onrender.com
-        axios.post('http://localhost:4000/api/weapons', weaponData)
+        axios.post('https://tool-backendf.onrender.com/api/weapons', weaponData)
             .then(response => {
                 alert('Weapon added successfully!');
             })

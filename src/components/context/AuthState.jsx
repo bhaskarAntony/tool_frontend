@@ -34,7 +34,7 @@ const AuthState = ({ children }) => {
     }
 
     try {
-      const res = await axios.get(`http://localhost:4000/api/admin/verify`);
+      const res = await axios.get(`https://tool-backendf.onrender.com/api/admin/verify`);
       dispatch({
         type: USER_LOADED,
         payload: res.data,
@@ -57,7 +57,7 @@ const AuthState = ({ children }) => {
     };
 
     try {
-      const res = await axios.post(`http://localhost:4000/api/admin/register`, formData, config);
+      const res = await axios.post(`https://tool-backendf.onrender.com/api/admin/register`, formData, config);
       dispatch({
         type: REGISTER_SUCCESS,
         payload: res.data,
@@ -75,7 +75,7 @@ const AuthState = ({ children }) => {
   
   const login = async (formData) => {
     try {
-      const res = await axios.post(`http://localhost:4000/api/admin/login`, formData);
+      const res = await axios.post(`https://tool-backendf.onrender.com/api/admin/login`, formData);
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data,

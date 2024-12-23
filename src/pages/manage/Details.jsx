@@ -9,7 +9,7 @@ function Details({id}) {
     useEffect(() => {
         const fetchDetails = async () => {
             try {
-                const res = await axios.get(`http://localhost:4000/api/weapons/single/${id}`);
+                const res = await axios.get(`https://tool-backendf.onrender.com/api/weapons/single/${id}`);
                 setWeaponDetails(res.data); // Save fetched data
                 setLoading(false);
             } catch (error) {

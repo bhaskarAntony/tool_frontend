@@ -24,7 +24,7 @@ function NewAmmunition() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/api/items', {
+      const response = await axios.post('https://tool-backendf.onrender.com/api/items', {
         title,
         description,
         specifications,

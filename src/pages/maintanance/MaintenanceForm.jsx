@@ -17,7 +17,7 @@ export const MaintenanceForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/api/maintenance", formData);
+      await axios.post("https://tool-backendf.onrender.com/api/maintenance", formData);
       setFormData({
         registerNo: "",
         maintenanceDate: "",

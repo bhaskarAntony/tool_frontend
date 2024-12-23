@@ -27,7 +27,7 @@ function Ammunition() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:4000/api/items')
+      .get('https://tool-backendf.onrender.com/api/items')
       .then((response) => {
         setIsLoading(false);
         const fixedWeapons = response.data;
@@ -107,7 +107,7 @@ const closeCanvasHanlder = () =>{
 
 const handleDelete = async (weaponId) => {
     try {
-        await axios.delete(`http://localhost:4000/api/weapons/${weaponId}`);
+        await axios.delete(`https://tool-backendf.onrender.com/api/weapons/${weaponId}`);
         setWeapons(prevWeapons => prevWeapons.filter(w => w.id !== weaponId));
         alert('Weapon deleted successfully.');
     } catch (error) {

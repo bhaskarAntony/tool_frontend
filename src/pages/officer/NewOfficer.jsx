@@ -23,7 +23,7 @@ function NewOfficer() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:4000/api/officer', officerData)
+        axios.post('https://tool-backendf.onrender.com/api/officer', officerData)
             .then(response => {
                 alert('Officer added successfully!');
                 setOfficerData({

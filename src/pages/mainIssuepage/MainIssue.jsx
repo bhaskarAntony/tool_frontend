@@ -24,7 +24,7 @@ function MainIssue() {
   // Fetch officers and weapons from the backend
   useEffect(() => {
     setIsLoading(true);
-    axios.get('http://localhost:4000/api/officer')
+    axios.get('https://tool-backendf.onrender.com/api/officer')
       .then(response => {
         setIsLoading(false);
         setOfficers(response.data)
@@ -34,7 +34,7 @@ function MainIssue() {
         console.error('Error fetching officers:', error)
       });
 
-    axios.get('http://localhost:4000/api/weapons')
+    axios.get('https://tool-backendf.onrender.com/api/weapons')
       .then(response =>{
         setIsLoading(false);
         setWeapons(response.data)
@@ -101,7 +101,7 @@ function MainIssue() {
     }
 
     // Send the request to issue the weapons
-    axios.post('http://localhost:4000/api/transactions/issue', {
+    axios.post('https://tool-backendf.onrender.com/api/transactions/issue', {
         officerId: selectedOfficer._id,  // Pass the officerId correctly
         weaponIds: selectedWeapons       // List of selected weapon IDs
       })
@@ -110,7 +110,7 @@ function MainIssue() {
         setModalVariant("success");
         setIsLoading(false);
         setShowModal(true);
-        navigate('/manage/officers')
+        navigate('/manage/armoury')
       })
       .catch(error => {
         console.error('Error issuing weapons:', error);

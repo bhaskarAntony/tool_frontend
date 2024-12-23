@@ -30,7 +30,7 @@ function Transactions() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:4000/api/transactions/list')
+      .get('https://tool-backendf.onrender.com/api/transactions/list')
       .then((response) => {
         setIsLoading(false);
         const fixedWeapons = response.data;
@@ -110,7 +110,7 @@ const closeCanvasHanlder = () =>{
 
 const handleDelete = async (weaponId) => {
     try {
-        await axios.delete(`http://localhost:4000/api/weapons/${weaponId}`);
+        await axios.delete(`https://tool-backendf.onrender.com/api/weapons/${weaponId}`);
         setWeapons(prevWeapons => prevWeapons.filter(w => w.id !== weaponId));
         alert('Weapon deleted successfully.');
     } catch (error) {
