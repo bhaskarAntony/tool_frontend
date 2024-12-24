@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Loading from "../../components/loading/Loading";
 
 export const MaintenanceForm = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ export const MaintenanceForm = () => {
     assignedOfficer: "",
     // cost: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,8 +18,10 @@ export const MaintenanceForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       await axios.post("https://tool-backendf.onrender.com/api/maintenance", formData);
+      alert('log created successfully');
       setFormData({
         registerNo: "",
         maintenanceDate: "",
@@ -25,10 +29,15 @@ export const MaintenanceForm = () => {
         assignedOfficer: "",
         cost: "",
       });
+      setLoading(false)
     } catch (error) {
+      setLoading(false);
       console.error("Error adding log:", error);
     }
   };
+  if(loading){
+    return <Loading/>
+  }
 
   return (
     <form onSubmit={handleSubmit} className="dashboard-card p-4">

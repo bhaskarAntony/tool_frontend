@@ -7,6 +7,8 @@ import { Dropdown, Offcanvas } from 'react-bootstrap';
 import NewArmoury from '../../components/Newarmary/NewArmoury';
 import Edit from '../manage/Edit';
 import Details from '../manage/Details';
+import EditOfficer from './EditOfficer';
+import NewOfficer from '../officer/NewOfficer';
 
 
 function Armoury() {
@@ -106,15 +108,15 @@ const closeCanvasHanlder = () =>{
     setAddType('');
 }
 
-const handleDelete = async (weaponId) => {
-    try {
-        await axios.delete(`https://tool-backendf.onrender.com/api/officer/${weaponId}`);
-        setWeapons(prevWeapons => prevWeapons.filter(w => w.id !== weaponId));
-        alert('Weapon deleted successfully.');
-    } catch (error) {
-        console.error('Error deleting weapon:', error);
-        alert('Failed to delete weapon.');
-    }
+const handleDelete = async (id) => {
+  try {
+      await axios.delete(`https://tool-backendf.onrender.com/api/officer/${id}`);
+      setWeapons(preOfficer => preOfficer.filter(w => w.id !== id));
+      alert('Weapon deleted successfully.');
+  } catch (error) {
+      console.error('Error deleting weapon:', error);
+      alert('Failed to delete weapon.');
+  }
 };
   return (
     <section className="container-fluid p-3 p-md-5">
@@ -224,8 +226,8 @@ const handleDelete = async (weaponId) => {
                         <Dropdown.Menu>
                           <Dropdown.Item onClick={()=>openCanvasHandler('edit', item._id)}>Edit</Dropdown.Item>
                           <Dropdown.Item onClick={()=>handleDelete(item._id)}>Delete</Dropdown.Item>
-                          <Dropdown.Item  onClick={()=>openCanvasHandler('view', item._id)}>View Details</Dropdown.Item>
-                          <Dropdown.Item>History</Dropdown.Item>
+                          {/* <Dropdown.Item  onClick={()=>openCanvasHandler('view', item._id)}>View Details</Dropdown.Item> */}
+                          {/* <Dropdown.Item>History</Dropdown.Item> */}
                         </Dropdown.Menu>
                       </Dropdown>
                     </td>
@@ -242,9 +244,9 @@ const handleDelete = async (weaponId) => {
           </table>
         </div>
         <div className="col-md-3">
-          <a href="#add-new" className="red-btn w-100 text-start px-3">
+          <button onClick={()=>openCanvasHandler('new')}className="red-btn w-100 text-start px-3">
             <i className="bi bi-plus-lg"></i> Add new Officer
-          </a>
+          </button>
         </div>
       </div>
       <Offcanvas show={showCanvas} onHide={closeCanvasHanlder} placement='bottom'>
@@ -253,7 +255,7 @@ const handleDelete = async (weaponId) => {
         </Offcanvas.Header>
         <Offcanvas.Body>
             {
-                AddType=='armoury'?(<NewArmoury C_type={'armoury'}/>):AddType=='edit'?(<Edit id={updateId}/>):AddType=='view'?(<Details id={updateId}/>):(null)
+                AddType=='new'?(<NewOfficer C_type={'armoury'}/>):AddType=='edit'?(<EditOfficer id={updateId}/>):AddType=='view'?(<Details id={updateId}/>):(null)
             }
         </Offcanvas.Body>
       </Offcanvas>

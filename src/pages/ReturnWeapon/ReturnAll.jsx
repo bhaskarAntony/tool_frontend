@@ -237,8 +237,9 @@ const handleDelete = async (weaponId) => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="5" className="text-center">
-                    No weapons found.
+                  <td colSpan="9" className="text-center p-3">
+                  <i class="bi bi-ban display-2"></i>
+                  <p className="fs-5 fw-bold mt-2">  No weapons found.</p>
                   </td>
                 </tr>
               )}

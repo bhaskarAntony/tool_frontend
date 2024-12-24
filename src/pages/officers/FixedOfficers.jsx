@@ -108,7 +108,7 @@ const closeCanvasHanlder = () =>{
 
 const handleDelete = async (weaponId) => {
     try {
-        await axios.delete(`https://tool-backendf.onrender.com/api/weapons/${weaponId}`);
+        await axios.delete(`https://tool-backendf.onrender.com/api/officer/${weaponId}`);
         setWeapons(prevWeapons => prevWeapons.filter(w => w.id !== weaponId));
         alert('Weapon deleted successfully.');
     } catch (error) {
@@ -219,7 +219,7 @@ const handleDelete = async (weaponId) => {
                           <Dropdown.Item onClick={()=>openCanvasHandler('edit', item._id)}>Edit</Dropdown.Item>
                           <Dropdown.Item onClick={()=>handleDelete(item._id)}>Delete</Dropdown.Item>
                           <Dropdown.Item  onClick={()=>openCanvasHandler('view', item._id)}>View Details</Dropdown.Item>
-                          <Dropdown.Item>History</Dropdown.Item>
+                          {/* <Dropdown.Item>History</Dropdown.Item> */}
                         </Dropdown.Menu>
                       </Dropdown>
                     </td>

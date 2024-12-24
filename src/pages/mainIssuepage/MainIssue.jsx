@@ -19,6 +19,7 @@ function MainIssue() {
   const [modalVariant, setModalVariant] = useState("success"); // Success or error modal variant
   const [officerId, setOfficerId] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [ammunitionData, setAmmunitionData] = useState([])
   const navigate = useNavigate();
 
   // Fetch officers and weapons from the backend
@@ -28,6 +29,16 @@ function MainIssue() {
       .then(response => {
         setIsLoading(false);
         setOfficers(response.data)
+      })
+      .catch(error => {
+        setIsLoading(false);
+        console.error('Error fetching officers:', error)
+      });
+
+      axios.get('https://tool-backendf.onrender.com/api/items')
+      .then(response => {
+        setIsLoading(false);
+        setAmmunitionData(response.data)
       })
       .catch(error => {
         setIsLoading(false);
@@ -69,14 +80,18 @@ function MainIssue() {
     weapon.buttno.toLowerCase().includes(searchWeapon.toLowerCase())
   );
 
-  // Handle checkbox selection of weapons
   const handleCheckboxChange = (weaponId) => {
-    setSelectedWeapons(prevState =>
-      prevState.includes(weaponId)
-        ? prevState.filter(id => id !== weaponId)
-        : [...prevState, weaponId]
-    );
+    setSelectedWeapons((prevState) => {
+      if (prevState.includes(weaponId)) {
+        // Remove the weapon ID if it's already selected
+        return prevState.filter((id) => id !== weaponId);
+      } else {
+        // Add the weapon ID to the selected list
+        return [...prevState, weaponId];
+      }
+    });
   };
+  
 
   // Handle selecting an officer
   const handleOfficerSelect = (officer) => {
@@ -158,13 +173,13 @@ function MainIssue() {
         {/* Right Column: Search Weapons */}
         <div className="col-md-6">
         <Tabs
-      defaultActiveKey="profile"
+      defaultActiveKey="home"
       id="uncontrolled-tab-example"
       className="mb-3"
     >
       <Tab eventKey="home" title="Armoury">
       <div className="search-weapons">
-          <h4 className='fs-5'>Search Armoury</h4>
+          <h4 className='fs-5'>Search Ammunition</h4>
           <hr />
           <input
             type="text"
@@ -215,7 +230,7 @@ function MainIssue() {
       </Tab>
       <Tab eventKey="profile" title="Ammunition">
       <div className="search-weapons">
-          <h4 className='fs-5'>Search Ammunition</h4>
+          <h4 className='fs-5'>Search Armoury</h4>
           <hr />
           <input
             type="text"
@@ -228,41 +243,38 @@ function MainIssue() {
             <thead>
               <tr>
                 <th>Weapon Name</th>
-                <th>Weapon Register No</th>
+                <th>Description</th>
                 <th>Status</th>
-                <th>Select</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              {filteredWeapons.map((weapon) => {
-                const isUnavailable =
-                  weapon.status === "issued" ||
-                  (weapon.fixedToOfficer &&
-                    (weapon.fixedToOfficer.rank !== "" ||
-                      weapon.fixedToOfficer.officername !== "" ||
-                      weapon.fixedToOfficer.metalno !== ""));
-
-                return (
-                  <tr key={weapon._id}>
-                    <td>{weapon.type}</td>
-                    <td>{weapon.registerNumber}</td>
-                    <td>{weapon.status == 'issued' ? <span className="px-3 p-1 small  rounded text-danger">Unavailable</span> : <span className="px-3 p-1 small  rounded text-success">Available</span>}</td>
-                    <td>
-                      {!isUnavailable && (
-                        
-                        <input
-                          type="checkbox"
-                          id={weapon._id}
-                          onChange={() => handleCheckboxChange(weapon._id)}
-                        />
-                      )}
-                    </td>
-                  </tr>
-                );
-              })}
+            {ammunitionData.map((item) => (
+              <tr key={item._id}>
+                <td>{item.title}</td>
+                <td>{item.description}</td>
+                <td>
+                  {item.status === "issued" ? (
+                    <span className="px-3 p-1 small rounded text-danger">Unavailable</span>
+                  ) : (
+                    <span className="px-3 p-1 small rounded text-success">Available</span>
+                  )}
+                </td>
+                <td>
+                  {item.status === "Available" && (
+                    <input
+                      type="checkbox"
+                      id={item._id}
+                      onChange={() => handleCheckboxChange(item._id)}
+                    />
+                  )}
+                </td>
+              </tr>
+            ))}
             </tbody>
           </table>
           </div>
+    
       </Tab>
       <Tab eventKey="contact" title="Munition" >
       <div className="search-weapons">

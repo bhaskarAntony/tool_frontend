@@ -69,8 +69,8 @@ function Munition() {
                     !data.length>=0?(
                         <div className="row">
                             <div className="col-md-5 m-auto  text-center p-5">
-                            <i class="bi bi-ban fs-1"></i>
-                            <h1 className="fs-5">No data found</h1>
+                            <i class="bi bi-ban display-2"></i>
+                            <p className="fs-5 fw-bold mt-2">  No Munitions found.</p>
                             </div>
                         </div>
                     ):(null)
