@@ -12,7 +12,7 @@ function SignUp() {
 
   const [passwordType, setPasswordType] = useState('password'); // Toggle password visibility
   const [formData, setFormData] = useState({ 
-    adminemail: location?.state?.email || '', 
+    adminemail:  '', 
     password: '' 
   });
 
@@ -63,16 +63,29 @@ function SignUp() {
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Seal_of_Karnataka.svg/800px-Seal_of_Karnataka.svg.png"
                 alt="Seal of Karnataka"
               />
+              <h1 className="fs-4 fw-bold mt-3">Kanrnataka State police Arnoury Management Portal</h1>
 
-              <h1 className="fs-4 fw-bold mt-3">Great to see you</h1>
+              {/* <h1 className="fs-4 fw-bold mt-3">Great to see you</h1>
               <p className="small text-secondary" title={adminemail}>
                 {adminemail}{' '}
                 <Link to="/login" className="text-secondary" title="Edit email">
                   <i className="bi bi-pencil-fill"></i>
                 </Link>
-              </p>
+              </p> */}
 
               <form onSubmit={handleSubmit}>
+              <div className="form-group mt-2 text-start">
+              <label htmlFor="email" className="form-label">Adminemail</label>
+              <input
+                type="text"
+                id="email"
+                placeholder="Please enter email"
+                className="form-control"
+                name='adminemail'
+                value={formData.adminemail}
+                onChange={handleChange}
+              />
+            </div>
                 <div className="form-group mt-2 text-start">
                   <label htmlFor="password" className="form-label">
                     Please enter your password

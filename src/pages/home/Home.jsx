@@ -114,7 +114,15 @@ function Home() {
     legend: { position: 'bottom' },
     dataLabels: { enabled: true },
   };
-  const donutChartData = {
+  const armourydata = {
+    series: [stats.availableWeapons, stats.issuedWeapons, stats.totalWeapons],
+  };
+
+  const ammunitiondata = {
+    series: [stats.availableWeapons, stats.issuedWeapons, stats.totalWeapons],
+  };
+
+  const munitiondata = {
     series: [stats.availableWeapons, stats.issuedWeapons, stats.totalWeapons],
   };
 
@@ -157,7 +165,12 @@ function Home() {
     
   return (
     <section className="container-fluid p-3 p-md-5">
-        <h1 className="fs-3 fw-normal">Administrator Dashboard</h1>
+       <div className="d-flex gap-4 align-items-center">
+       <h1 className="fs-3 fw-normal">Karnataka State Police Armoury Management Portal</h1>
+       <div className="icon">
+          <i class="bi bi-arrow-clockwise fs-4"></i>
+        </div>
+       </div>
         <hr />
         <div className="row">
             <div className="col-md-9">
@@ -184,25 +197,98 @@ function Home() {
                        </div> */}
                         </div>
                         <div className="card-body">
-                            <h5 className="fs-5 text-secondary">Available/Issued Count</h5>
+                            <h5 className="fs-5 text-secondary">Armoury</h5>
                             <hr />
                            
                             <Chart
-                        options={donutChartOptions}
-                        series={donutChartData?.series}
-                        type="donut"
-                        height="300"
-                      />
+                            options={donutChartOptions}
+                            series={armourydata?.series}
+                            type="donut"
+                            height="300"
+                          />
                            
                         </div>
                     </div>
                   </div>
-                  <div className="col-md-6">
+                  {/* <div className="col-md-6">
                   <IssuedChart
                 total={stats?.totalWeapons}
                 available={stats?.availableWeapons}
                 issued={stats?.issuedWeapons}
+                 />
+                    <Chart
+                            options={donutChartOptions}
+                            series={ammunitiondata?.series}
+                            type="donut"
+                            height="300"
+                          />
+
+                  </div>
+                  <div className="col-md-6">
+              <IssuedChart
+                total={stats?.totalWeapons}
+                available={stats?.availableWeapons}
+                issued={stats?.issuedWeapons}
               />
+                          <Chart
+                            options={donutChartOptions}
+                            series={munitiondata?.series}
+                            type="donut"
+                            height="300"
+                          />
+              </div> */}
+
+<div className="col-md-6 mb-3">
+                  <div className="card rounded-0">
+                        <div className="card-header p-2 d-flex gap-2 align-items-center justify-content-end">
+                       <div className="icon">
+                       <i class="bi bi-arrow-clockwise"></i>
+                       </div>
+                       {/* <div className="icon" onClick={()=>{
+                            isOpen?(close()):(open(2))
+                       }}>
+                       <i class="bi bi-arrows-angle-expand"></i>
+                       </div> */}
+                        </div>
+                        <div className="card-body">
+                            <h5 className="fs-5 text-secondary">Ammunition</h5>
+                            <hr />
+                           
+                            <Chart
+                            options={donutChartOptions}
+                            series={ammunitiondata?.series}
+                            type="donut"
+                            height="300"
+                          />
+                           
+                        </div>
+                    </div>
+                  </div>
+                  <div className="col-md-6 mb-3">
+                  <div className="card rounded-0">
+                        <div className="card-header p-2 d-flex gap-2 align-items-center justify-content-end">
+                       <div className="icon">
+                       <i class="bi bi-arrow-clockwise"></i>
+                       </div>
+                       {/* <div className="icon" onClick={()=>{
+                            isOpen?(close()):(open(2))
+                       }}>
+                       <i class="bi bi-arrows-angle-expand"></i>
+                       </div> */}
+                        </div>
+                        <div className="card-body">
+                            <h5 className="fs-5 text-secondary">Munition</h5>
+                            <hr />
+                           
+                            <Chart
+                            options={donutChartOptions}
+                            series={armourydata?.series}
+                            type="donut"
+                            height="300"
+                          />
+                           
+                        </div>
+                    </div>
                   </div>
                   <div className="col-md-6">
                   <BarChart transactions={transactions} />

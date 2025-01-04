@@ -76,18 +76,40 @@ function NewArmoury({title, C_type}) {
                 <Row>
                     <Col md={6}>
                         <Form.Group controlId="formType">
-                            <Form.Label>Weapon Type</Form.Label>
-                            <Form.Control
+                            <Form.Label>Armoury Type</Form.Label>
+                            {/* <Form.Control
                                 type="text"
                                 placeholder="Enter weapon type"
                                 name="type"
                                 value={weaponData.type}
                                 onChange={handleInputChange}
                                 required
-                            />
+                            /> */}
+                            <select className='form-control' onChange={handleInputChange} value={weaponData.type} name="type" id="">
+                            <option value="7.62mm SLR 1A1">7.62mm SLR 1A1</option>
+                            <option value="RIFLE  7.62mm AK-47">RIFLE  7.62mm AK-47</option>
+                            <option value="RIFLE  5.56mm INSAS">RIFLE  5.56mm INSAS</option>
+                            <option value="RIFLE  5.56mm EX-CALIBUR">RIFLE  5.56mm EX-CALIBUR</option>
+                            <option value="GM 7.62mm LMG 1B">GM 7.62mm LMG 1B</option>
+                            <option value="RIFLE 7.62mm TAR">RIFLE 7.62mm TAR</option>
+                            <option value="5.56mm  JVPC">5.56mm  JVPC</option>
+                            <option value="9mm CMG">9mm CMG</option>
+                            <option value="9mm BROWNING PISTOL">9mm BROWNING PISTOL</option>
+                            <option value="9mm AUTO PISTOL 1A">9mm AUTO PISTOL 1A</option>
+                            <option value="ANTI RIOT GUN .303">ANTI RIOT GUN .303</option>
+                            <option value="ANTI RIOT GUN 50G">ANTI RIOT GUN 50G</option>
+                            <option value="ANTI RIOT GUN 80G">ANTI RIOT GUN 80G</option>
+                            <option value="PROJECTOR PYRO TECHNIC  13MM   HAND ">PROJECTOR PYRO TECHNIC  13MM   HAND </option>
+                            <option value="TEAR GAS GUN ">TEAR GAS GUN </option>
+                            <option value="COLT  M-4 RIFLE">COLT  M-4 RIFLE</option>
+                            <option value="GM 5.56MM LMG 1A1">GM 5.56MM LMG 1A1</option>
+                            <option value="51MM  MORTAR">51MM  MORTAR</option>
+                            <option value="MBL (Agnivarsha)">MBL (Agnivarsha)</option>
+                            <option value=".303’’ NO 4 MK-1 RIFLE">.303’’ NO 4 MK-1 RIFLE</option>
+                            </select>
                         </Form.Group>
                     </Col>
-                    <Col md={6}>
+                    {/* <Col md={6}>
                         <Form.Group controlId="formType">
                             <Form.Label>Weapon Type</Form.Label>
                             <select name="category" className='form-select' id="" onChange={handleInputChange}>
@@ -97,7 +119,7 @@ function NewArmoury({title, C_type}) {
                                 <option value="munition">Munition</option>
                             </select>
                         </Form.Group>
-                    </Col>
+                    </Col> */}
                     <Col md={6}>
                         <Form.Group controlId="formRegisterNumber">
                             <Form.Label>Register Number</Form.Label>
@@ -145,18 +167,55 @@ function NewArmoury({title, C_type}) {
                     <Col md={6}>
                         <Form.Group controlId="formCoy">
                             <Form.Label>Company</Form.Label>
-                            <Form.Control
+                            {/* <Form.Control
                                 type="text"
                                 placeholder="Enter company name"
                                 name="coy"
                                 value={weaponData.coy}
+                                onChange={handleInputChange}
+                            /> */}
+                            <select name="coy" value={weaponData.coy} onChange={handleInputChange} id="" className="form-control">
+
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="G">G</option>
+                                <option value="H">H</option>
+                            </select>
+                        </Form.Group>
+                    </Col>
+                   
+                    <Col md={2}>
+                        <Form.Group controlId="formImage">
+                            <Form.Label>Allocated?</Form.Label>
+                            <Form.Select 
+                                className="form-select" 
+                                value={isIssued} 
+                                onChange={(e) => setisIssued(e.target.value === "true")}
+                            >
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </Form.Select>
+                        </Form.Group>
+                    </Col>
+                    <Col md={4}>
+                        <Form.Group controlId="formRackNumber">
+                            <Form.Label>Rack Number</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter rack number"
+                                name="rackNumber"
+                                value={weaponData.rackNumber}
                                 onChange={handleInputChange}
                             />
                         </Form.Group>
                     </Col>
                     <Col md={4}>
                         <Form.Group controlId="formRank">
-                            <Form.Label>Officer Rank</Form.Label>
+                            <Form.Label>Officer/Men Rank</Form.Label>
                             <Form.Control
                                 type="text"
                                 placeholder="Enter officer rank"
@@ -168,7 +227,7 @@ function NewArmoury({title, C_type}) {
                     </Col>
                     <Col md={4}>
                         <Form.Group controlId="formMetalno">
-                            <Form.Label>Officer Metal Number</Form.Label>
+                            <Form.Label>Officer/Men KGID</Form.Label>
                             <Form.Control
                                 type="text"
                                 placeholder="Enter officer metal number"
@@ -180,7 +239,7 @@ function NewArmoury({title, C_type}) {
                     </Col>
                     <Col md={4}>
                         <Form.Group controlId="formOfficerName">
-                            <Form.Label>Officer Name</Form.Label>
+                            <Form.Label>Officer/Men Name</Form.Label>
                             <Form.Control
                                 type="text"
                                 placeholder="Enter officer name"
@@ -214,31 +273,7 @@ function NewArmoury({title, C_type}) {
                         </Form.Group>
                     </Col>
 
-                    <Col md={6}>
-                        <Form.Group controlId="formImage">
-                            <Form.Label>Is Weapon Fixed?</Form.Label>
-                            <Form.Select 
-                                className="form-select" 
-                                value={isIssued} 
-                                onChange={(e) => setisIssued(e.target.value === "true")}
-                            >
-                                <option value="true">Yes</option>
-                                <option value="false">No</option>
-                            </Form.Select>
-                        </Form.Group>
-                    </Col>
-                    <Col md={6}>
-                        <Form.Group controlId="formRackNumber">
-                            <Form.Label>Rack Number</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter rack number"
-                                name="rackNumber"
-                                value={weaponData.rackNumber}
-                                onChange={handleInputChange}
-                            />
-                        </Form.Group>
-                    </Col>
+                   
                 </Row>
 
 

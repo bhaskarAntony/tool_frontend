@@ -41,21 +41,23 @@ function NewAmmunition() {
   return (
     <form onSubmit={handleSubmit} className="container mt-4">
       <div className="mb-3">
-        <label className="form-label">Title</label>
+        <label className="form-label">Ammunition Name</label>
         <input
           type="text"
           className="form-control"
           value={title}
+          placeholder='Enter Ammunition name'
           onChange={(e) => setTitle(e.target.value)}
           required
         />
       </div>
       <div className="mb-3">
-        <label className="form-label">Description</label>
+        <label className="form-label">About Ammunition</label>
         <textarea
           className="form-control"
           rows="3"
           value={description}
+          placeholder='Write about Ammunition'
           onChange={(e) => setDescription(e.target.value)}
           required
         ></textarea>
@@ -68,7 +70,7 @@ function NewAmmunition() {
            <input
               type="text"
               className="form-control mb-2"
-              placeholder="Specification Title"
+              placeholder="Specification Name"
               value={spec.title}
               onChange={(e) => handleSpecificationChange(index, 'title', e.target.value)}
               required
@@ -90,17 +92,17 @@ function NewAmmunition() {
               className="btn btn-danger btn-sm"
               onClick={() => handleRemoveSpecification(index)}
             >
-              Remove
+              <i class="bi bi-x-lg"></i> 
             </button>
             </div>
           </div>
         ))}
-        <button type="button" className="btn btn-secondary" onClick={handleAddSpecification}>
-          Add More
+        <button type="button" className="btn btn-outline-secondary rounded-1" onClick={handleAddSpecification}>
+        <i class="bi bi-plus-lg"></i> Add More
         </button>
       </div>
-      <button type="submit" className="btn btn-primary">
-        Submit
+      <button type="submit" className="red-btn px-5">
+      <i class="bi bi-check-circle"></i> Create
       </button>
     </form>
   );

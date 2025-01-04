@@ -4,7 +4,7 @@ import ReactApexChart from 'react-apexcharts';
 function IssuedChart({ total = 0, available = 0, issued = 0 }) {
      // Handle edge cases where total is zero or invalid
   if (total <= 0) {
-    return <div>No data available</div>;
+    return <div>Ammunition</div>;
   }
 
   // Calculate percentages, ensuring no division by zero
@@ -50,9 +50,9 @@ function IssuedChart({ total = 0, available = 0, issued = 0 }) {
   return (
     <div className="card rounded-0">
                         <div className="card-header p-2 d-flex gap-2 align-items-center justify-content-end">
-                       <div className="icon">
+                       {/* <div className="icon">
                        <i class="bi bi-arrow-clockwise"></i>
-                       </div>
+                       </div> */}
                        {/* <div className="icon" onClick={()=>{
                             isOpen?(close()):(open(2))
                        }}>

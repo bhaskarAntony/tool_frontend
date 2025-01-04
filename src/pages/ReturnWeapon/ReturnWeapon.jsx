@@ -177,7 +177,7 @@ function ReturnWeapon() {
                     <Button variant="secondary" className='rounded-pill' onClick={() => setShowModal(false)}>
                         Cancel
                     </Button>
-                    <button className='g-btn' onClick={handleReturnWeapons}>
+                    <button className='red-btn' onClick={handleReturnWeapons}>
                         Return Weapon
                     </button>
                 </Modal.Footer>

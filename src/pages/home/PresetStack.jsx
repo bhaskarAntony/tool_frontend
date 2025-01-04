@@ -12,9 +12,7 @@ function PresetStack({open, close, isOpen, armoury, ammunitionData}) {
   return (
     <div className="card rounded-0 h-100">
                         <div className="card-header p-2 d-flex gap-2 align-items-center justify-content-end">
-                       <div className="icon">
-                       <i class="bi bi-arrow-clockwise"></i>
-                       </div>
+                       
                        <div className="icon" onClick={()=>{
                             isOpen?(close()):(open(1))
                        }}>
@@ -22,7 +20,7 @@ function PresetStack({open, close, isOpen, armoury, ammunitionData}) {
                        </div>
                         </div>
                         <div className="card-body">
-                            <h5 className="fs-5 text-secondary">Present Count</h5>
+                            <h5 className="fs-5 text-secondary">Total Count</h5>
                             <hr />
                             <div className="row">
                                 <div className="col-md-4">

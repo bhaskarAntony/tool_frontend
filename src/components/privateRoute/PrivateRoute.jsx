@@ -6,7 +6,7 @@ const PrivateRoute = ({ children }) => {
   const { isAuthenticated } = useContext(AuthContext);
   const location = useLocation()
 
-  return isAuthenticated ? children : <Navigate to="/login" state={{path:location.pathname}} />;
+  return isAuthenticated ? children : <Navigate to="/SignIn_VerifyPassword" state={{path:location.pathname}} />;
 };
 
 export default PrivateRoute;

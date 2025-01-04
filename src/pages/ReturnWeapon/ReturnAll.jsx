@@ -231,7 +231,7 @@ const handleDelete = async (weaponId) => {
                           <Dropdown.Item>History</Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown> */}
-                      <a href={`/return/weapon/${item._id}`} className='red-btn'>Take</a>
+                      <a href={`/return/weapon/${item._id}`} className='red-btn'>Recieve</a>
                     </td>
                   </tr>
                 ))
