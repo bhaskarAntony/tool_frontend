@@ -22,6 +22,8 @@ function Header() {
     
       navigate('/SignIn_VerifyPassword')
     }
+    console.log(user.role);
+    
     
   return (
     <header className='p-1'>
@@ -39,7 +41,10 @@ function Header() {
             navbarScroll
           >
             <Nav.Link href="/" className='bg-light h-100'>Home</Nav.Link>
-            <NavDropdown title="Manage" id="navbarScrollingDropdown">
+          {
+            user.role == 'super_admin'?(
+              <>
+                <NavDropdown title="Manage" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/manage/armoury">Manage Armoury</NavDropdown.Item>
               <NavDropdown.Item href="/manage/ammunition">Manage Ammunition</NavDropdown.Item>
               <NavDropdown.Item href="/manage/munition">Manage Munition</NavDropdown.Item>
@@ -51,6 +56,9 @@ function Header() {
               <NavDropdown.Item href="/fixed/officer">Fixed Officers</NavDropdown.Item>
               <NavDropdown.Item href="/duty/officer">Daily Duty Officers</NavDropdown.Item>
             </NavDropdown>
+              </>
+            ):(null)
+          }
 
             <Nav.Link href="/issue" className='bg-light h-100'>Issue</Nav.Link>
             <Nav.Link href="/return" className='bg-light h-100'>Return</Nav.Link>

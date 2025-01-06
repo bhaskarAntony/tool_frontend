@@ -24,6 +24,7 @@ import {
           ...state,
           ...action.payload,
           isAuthenticated: true,
+          user:action.payload.user,
           loading: false,
         };
       case REGISTER_FAIL:

@@ -109,21 +109,21 @@ function Home() {
     // Donut Chart Configuration
   const donutChartOptions = {
     chart: { type: 'donut' },
-    labels: ['Available Weapons', 'Issued Weapons', 'Total Weapons'],
-    colors: ['#4BC0C0', '#FF9F40', '#36A2EB'],
+    labels: ['Available Weapons', 'Issued Weapons'],
+    colors: ['#4BC0C0', '#FF9F40'],
     legend: { position: 'bottom' },
     dataLabels: { enabled: true },
   };
   const armourydata = {
-    series: [stats.availableWeapons, stats.issuedWeapons, stats.totalWeapons],
+    series: [stats.availableWeapons, stats.issuedWeapons],
   };
 
   const ammunitiondata = {
-    series: [stats.availableWeapons, stats.issuedWeapons, stats.totalWeapons],
+    series: [stats.availableWeapons, stats.issuedWeapons],
   };
 
   const munitiondata = {
-    series: [stats.availableWeapons, stats.issuedWeapons, stats.totalWeapons],
+    series: [stats.availableWeapons, stats.issuedWeapons],
   };
 
   const radarChartData = {
@@ -187,9 +187,9 @@ function Home() {
                   <div className="col-md-6 mb-3">
                   <div className="card rounded-0">
                         <div className="card-header p-2 d-flex gap-2 align-items-center justify-content-end">
-                       <div className="icon">
+                       {/* <div className="icon">
                        <i class="bi bi-arrow-clockwise"></i>
-                       </div>
+                       </div> */}
                        {/* <div className="icon" onClick={()=>{
                             isOpen?(close()):(open(2))
                        }}>
@@ -241,9 +241,9 @@ function Home() {
 <div className="col-md-6 mb-3">
                   <div className="card rounded-0">
                         <div className="card-header p-2 d-flex gap-2 align-items-center justify-content-end">
-                       <div className="icon">
+                       {/* <div className="icon">
                        <i class="bi bi-arrow-clockwise"></i>
-                       </div>
+                       </div> */}
                        {/* <div className="icon" onClick={()=>{
                             isOpen?(close()):(open(2))
                        }}>
@@ -267,9 +267,9 @@ function Home() {
                   <div className="col-md-6 mb-3">
                   <div className="card rounded-0">
                         <div className="card-header p-2 d-flex gap-2 align-items-center justify-content-end">
-                       <div className="icon">
+                       {/* <div className="icon">
                        <i class="bi bi-arrow-clockwise"></i>
-                       </div>
+                       </div> */}
                        {/* <div className="icon" onClick={()=>{
                             isOpen?(close()):(open(2))
                        }}>
