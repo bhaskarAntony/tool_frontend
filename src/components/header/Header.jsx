@@ -72,8 +72,11 @@ function Header() {
             </NavDropdown> */}
             <Nav.Link href="/reports" className='bg-light h-100'>Reports</Nav.Link>
           </Nav>
-        <div className='d-flex gap-3'>
-        <Avatar sx={{ bgcolor: deepPurple[500] }}>A</Avatar>
+        <div className='d-flex gap-3 align-items-center'>
+      <div className='d-flex flex-column align-items-center card p-1 px-4'>
+      <Avatar sx={{ bgcolor: deepPurple[500] }}>A</Avatar>
+      <p className='mb-0 fs-6'>{(user.role).toUpperCase()}</p>
+      </div>
         <button className="red-btn" onClick={logout}>Logout</button>
         </div>
         </Navbar.Collapse>
