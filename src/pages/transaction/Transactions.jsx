@@ -145,14 +145,31 @@ const handleDelete = async (weaponId) => {
               <option value="export">Export</option>
             </select>
           </div>
-          <div className="main-btn mt-3 filter d-flex gap-2 align-items-center justify-content-between p-2">
-            <div className="d-flex gap-2 align-items-center">
+          <div className="main-btn mt-3 filter d-flex gap-2 align-items-center justify-content-between p-2" style={{maxWidth:'100%', overflow:'auto'}}>
+            <div className="d-flex gap-2 align-items-center" >
               <label htmlFor="type">Type</label>
-              <select name="type" id="type" onChange={handleFilterChange}>
-                <option value="">Select Armoury Type</option>
-                <option value="type1">Type 1</option>
-                <option value="type2">Type 2</option>
-              </select>
+              <select name="type" id="type">
+                            <option value="7.62mm SLR 1A1">7.62mm SLR 1A1</option>
+                            <option value="RIFLE  7.62mm AK-47">RIFLE  7.62mm AK-47</option>
+                            <option value="RIFLE  5.56mm INSAS">RIFLE  5.56mm INSAS</option>
+                            <option value="RIFLE  5.56mm EX-CALIBUR">RIFLE  5.56mm EX-CALIBUR</option>
+                            <option value="GM 7.62mm LMG 1B">GM 7.62mm LMG 1B</option>
+                            <option value="RIFLE 7.62mm TAR">RIFLE 7.62mm TAR</option>
+                            <option value="5.56mm  JVPC">5.56mm  JVPC</option>
+                            <option value="9mm CMG">9mm CMG</option>
+                            <option value="9mm BROWNING PISTOL">9mm BROWNING PISTOL</option>
+                            <option value="9mm AUTO PISTOL 1A">9mm AUTO PISTOL 1A</option>
+                            <option value="ANTI RIOT GUN .303">ANTI RIOT GUN .303</option>
+                            <option value="ANTI RIOT GUN 50G">ANTI RIOT GUN 50G</option>
+                            <option value="ANTI RIOT GUN 80G">ANTI RIOT GUN 80G</option>
+                            <option value="PROJECTOR PYRO TECHNIC  13MM   HAND ">PROJECTOR PYRO TECHNIC  13MM   HAND </option>
+                            <option value="TEAR GAS GUN ">TEAR GAS GUN </option>
+                            <option value="COLT  M-4 RIFLE">COLT  M-4 RIFLE</option>
+                            <option value="GM 5.56MM LMG 1A1">GM 5.56MM LMG 1A1</option>
+                            <option value="51MM  MORTAR">51MM  MORTAR</option>
+                            <option value="MBL (Agnivarsha)">MBL (Agnivarsha)</option>
+                            <option value=".303’’ NO 4 MK-1 RIFLE">.303’’ NO 4 MK-1 RIFLE</option>
+                            </select>
             </div>
 
             <div className="d-flex gap-2 align-items-center">
@@ -161,6 +178,8 @@ const handleDelete = async (weaponId) => {
                 <option value="">Select Armoury Status</option>
                 <option value="available">Available</option>
                 <option value="issued">Issued</option>
+                <option value="issued">Repair</option>
+                <option value="repair">Under Maintainance</option>
               </select>
             </div>
 
@@ -168,8 +187,9 @@ const handleDelete = async (weaponId) => {
               <label htmlFor="category">Category</label>
               <select name="category" id="category" onChange={handleFilterChange}>
                 <option value="">Select Armoury Category</option>
-                <option value="category1">Category 1</option>
-                <option value="category2">Category 2</option>
+                <option value="armoury">Armoury</option>
+                <option value="ammunition">Ammunition</option>
+                <option value="munition">Munition</option>
               </select>
             </div>
 
@@ -246,9 +266,9 @@ const handleDelete = async (weaponId) => {
           </table>
         </div>
         <div className="col-md-3">
-          <button  className="red-btn w-100 text-start px-3" onClick={()=>openCanvasHandler('issue')}>
-            <i className="bi bi-plus-lg"></i> Issue
-          </button>
+          <a href='/return'  className="red-btn w-100 text-start px-3" >
+            <i className="bi bi-plus-lg"></i> Return
+          </a>
         </div>
       </div>
       <Offcanvas show={showCanvas} onHide={closeCanvasHanlder} placement='bottom'>

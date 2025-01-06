@@ -97,7 +97,8 @@ const AuthState = ({ children }) => {
 
   // Logout
   const logout = () => {
-    dispatch({ type: LOGOUT });
+  localStorage.removeItem('token')
+
   };
 
   // Clear Errors

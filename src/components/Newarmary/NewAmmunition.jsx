@@ -40,7 +40,9 @@ function NewAmmunition() {
 
   return (
     <form onSubmit={handleSubmit} className="container mt-4">
-      <div className="mb-3">
+      <div className="row">
+        <div className="col-md-6">
+        <div className="mb-3">
         <label className="form-label">Ammunition Name</label>
         <input
           type="text"
@@ -50,6 +52,74 @@ function NewAmmunition() {
           onChange={(e) => setTitle(e.target.value)}
           required
         />
+      </div>
+    
+        </div>
+        <div className="col-md-6">
+      <div className="mb-3">
+        <label className="form-label">Bundle / Count</label>
+        <input
+          type="text"
+          className="form-control"
+          value={title}
+          placeholder='Bundle / Count'
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+      </div>
+      </div>
+      <div className="col-md-6">
+      <div className="mb-3">
+        <label className="form-label">Date of upload</label>
+        <input
+          type="date"
+          className="form-control"
+          value={title}
+          placeholder='Bundle / Count'
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+      </div>
+      </div>
+
+      <div className="col-md-6">
+      <div className="mb-3">
+        <label className="form-label">No.Of Empty Cases - When Fired</label>
+        <input
+          type="date"
+          className="form-control"
+          value={title}
+          placeholder='No.Of Empty Cases'
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+      </div>
+      </div>
+
+    
+
+      <div className="col-md-6">
+      <div className="mb-3">
+        <label className="form-label">No of Ammunition Fired</label>
+        <input
+          type="text"
+          className="form-control"
+          value={title}
+          placeholder='Fired Count'
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+      </div>
+      </div>
+
+      <div className="col-md-6">
+      <div className="mb-3">
+        <label className="form-label">Generated QR Code</label>
+       <div className="qr" style={{backgroundColor:'#ccc', padding:'20px', textAlign:'center'}}>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg" alt=""  style={{width:'100px'}} />
+       </div>
+      </div>
+      </div>
       </div>
       <div className="mb-3">
         <label className="form-label">About Ammunition</label>
@@ -62,7 +132,13 @@ function NewAmmunition() {
           required
         ></textarea>
       </div>
-      <div className="mb-3">
+      <div className="col-md-12">
+                        <label htmlFor="">Remarks</label>
+                        <textarea name="" className='form-control mb-3' id="" placeholder='Enter Remarks'></textarea>
+                    </div>
+                    <label htmlFor="">Upload Documents</label>
+                    <input type="file" className='form-control' />
+         <div className="mb-3 mt-4">
         <label className="form-label">Technical Specifications</label>
         {specifications.map((spec, index) => (
           <div key={index} className="row mb-2 align-items-center">
@@ -76,6 +152,7 @@ function NewAmmunition() {
               required
             />
            </div>
+           
             <div className="col-md-6">
             <input
               className="form-control mb-2"
@@ -86,6 +163,7 @@ function NewAmmunition() {
               required
             ></input>
             </div>
+            
             <div className="col-1">
             <button
               type="button"

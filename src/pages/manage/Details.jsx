@@ -106,19 +106,13 @@ function Details({id}) {
                     </div>
                 </div>
                 <div className="col-md-8">
-                    {
-                        weaponDetails.history.length>0?(
-                            null
-                        ):(
-                            <div className="row p-3 p-md-5 h-100 bg-white">
+                <div className="row p-3 p-md-5 h-100 bg-white">
                                 <div className="col-md-6 text-center m-auto">
                                 <i class="bi bi-ban display-5"></i>
                                         <h1 className="fs-4 mt-3 fw-bold">No History</h1>
                                         <p className="fs-6 text-secondary">No History available about this {weaponDetails.category}</p>
                                 </div>
                             </div>
-                        )
-                    }
                 </div>
             </div>
         </section>

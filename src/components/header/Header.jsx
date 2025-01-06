@@ -10,10 +10,18 @@ import Stack from '@mui/material/Stack';
 import { deepOrange, deepPurple } from '@mui/material/colors';
 import { useContext } from 'react';
 import AuthContext from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
-    const {user} = useContext(AuthContext);
+    const {user, isAthenticated} = useContext(AuthContext);
     console.log(user);
+    const navigate = useNavigate();
+
+    const logout = () =>{
+      localStorage.removeItem('token');
+    
+      navigate('/SignIn_VerifyPassword')
+    }
     
   return (
     <header className='p-1'>
@@ -56,8 +64,9 @@ function Header() {
             </NavDropdown> */}
             <Nav.Link href="/reports" className='bg-light h-100'>Reports</Nav.Link>
           </Nav>
-        <div>
+        <div className='d-flex gap-3'>
         <Avatar sx={{ bgcolor: deepPurple[500] }}>A</Avatar>
+        <button className="red-btn" onClick={logout}>Logout</button>
         </div>
         </Navbar.Collapse>
       </Container>

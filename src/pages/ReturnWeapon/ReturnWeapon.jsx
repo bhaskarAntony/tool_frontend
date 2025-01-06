@@ -14,7 +14,7 @@ function ReturnWeapon() {
 
     // Fetch transaction details on mount
     useEffect(() => {
-        axios.get(`https://tool-backendf.onrender.com/api/transactions/single/${String(transactionId)}`)
+        axios.get(`http://localhost:4000/api/transactions/single/${String(transactionId)}`)
             .then(response => setTransaction(response.data))
             .catch(error => console.error('Error fetching transaction:', error));
     }, [transactionId]);
@@ -48,7 +48,7 @@ function ReturnWeapon() {
             return;
         }
 
-        axios.post('https://tool-backendf.onrender.com/api/transactions/return', {
+        axios.post('http://localhost:4000/api/transactions/return', {
             transactionId,
             weaponsIds: selectedWeapons,
         })

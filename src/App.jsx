@@ -19,12 +19,16 @@ import ReturnWeapon from './pages/ReturnWeapon/ReturnWeapon'
 import Maintanance from './pages/maintanance/Maintanance'
 import { MaintenanceTable } from './pages/maintanance/MaintenanceTable'
 import Reports from './pages/Reports/Reports'
+import SessionTimeout from './pages/transaction/SessionTimeout'
 
 function App() {
   const {isAuthenticated} = useContext(AuthContext);
   return (
     <section className="container-fluid p-0">
         <BrowserRouter>
+     {
+      isAuthenticated?(   <SessionTimeout/>):(null)
+     }
       {
         isAuthenticated?(  <Header/>):(null)
       }

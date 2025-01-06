@@ -53,6 +53,9 @@ function SignUp() {
   //   }
   // }, [isAuthenticated, error, navigate, clearErrors]);
 
+  // useEffect(()=>{
+  //   window.location.reload()
+  // })
   return (
     <section className="container-fluid p-3 p-md-5 signup">
       <div className="signup-top">
@@ -63,7 +66,7 @@ function SignUp() {
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Seal_of_Karnataka.svg/800px-Seal_of_Karnataka.svg.png"
                 alt="Seal of Karnataka"
               />
-              <h1 className="fs-4 fw-bold mt-3">Kanrnataka State police Arnoury Management Portal</h1>
+              <h1 className="fs-4 fw-bold mt-3">Kanrnataka State police Armoury Management Portal</h1>
 
               {/* <h1 className="fs-4 fw-bold mt-3">Great to see you</h1>
               <p className="small text-secondary" title={adminemail}>
@@ -75,7 +78,7 @@ function SignUp() {
 
               <form onSubmit={handleSubmit}>
               <div className="form-group mt-2 text-start">
-              <label htmlFor="email" className="form-label">Adminemail</label>
+              <label htmlFor="email" className="form-label">Admin Email</label>
               <input
                 type="text"
                 id="email"

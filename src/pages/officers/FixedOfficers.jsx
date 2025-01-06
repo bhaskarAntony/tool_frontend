@@ -147,29 +147,46 @@ const handleDelete = async (weaponId) => {
             <div className="d-flex gap-2 align-items-center">
               <label htmlFor="type">Type</label>
               <select name="type" id="type" onChange={handleFilterChange}>
-                <option value="">Select Armoury Type</option>
-                <option value="type1">Type 1</option>
-                <option value="type2">Type 2</option>
+                <option value="">Select Officers Type</option>
+                <option value="type1">Fixed Officers/Men</option>
+                <option value="type2">Duty Ofiicers/Men</option>
+              </select>
+            </div>
+
+            <div className="d-flex gap-2 align-items-center">
+              <label htmlFor="type">Rank</label>
+              <select name="type" id="type" onChange={handleFilterChange}>
+                <option value="">Select Officers/Men Rank</option>
+                <option value="type1">PC</option>
+                <option value="type2">HC</option>
+                <option value="">ARSI</option>
+                <option value="">ASI</option>
+                <option value="">PSI</option>
+                <option value="">RSI</option>
+                <option value="">RPI</option>
+                <option value="">P1</option>
+                <option value="">AC</option>
+                <option value="">DSP</option>
               </select>
             </div>
 
             <div className="d-flex gap-2 align-items-center">
               <label htmlFor="status">Status</label>
               <select name="status" id="status" onChange={handleFilterChange}>
-                <option value="">Select Armoury Status</option>
-                <option value="available">Available</option>
-                <option value="issued">Issued</option>
+                <option value="">Select Officers Status</option>
+                <option value="returned">Returned</option>
+                <option value="recieved">Recieved</option>
               </select>
             </div>
 
-            <div className="d-flex gap-2 align-items-center">
+            {/* <div className="d-flex gap-2 align-items-center">
               <label htmlFor="category">Category</label>
               <select name="category" id="category" onChange={handleFilterChange}>
                 <option value="">Select Armoury Category</option>
-                <option value="category1">Category 1</option>
-                <option value="category2">Category 2</option>
+                <option value="fixed officers">Fixed Officers</option>
+                <option value="daily duty">Daily duty</option>
               </select>
-            </div>
+            </div> */}
 
             <div className="d-flex gap-2 align-items-center">
               <label htmlFor="createdOn">Created on</label>

@@ -5,6 +5,7 @@ import './style.css'
 
 function NewArmoury({title, C_type}) {
     const [isIssued, setisIssued] = useState(false)
+    const [isFixed, setIsFixed] = useState(false)
     const [weaponData, setWeaponData] = useState({
         type: '',
         registerNumber: '',
@@ -19,6 +20,15 @@ function NewArmoury({title, C_type}) {
         category:C_type,
         isIssued:isIssued,
     });
+    useEffect(()=>{
+        console.log(weaponData.isIssued);
+        
+        if(weaponData.isIssued == true){
+            setIsFixed(true)
+        }else{
+            setIsFixed(false)
+        }
+    }, [weaponData.isIssued])
     useEffect(() => {
         setWeaponData((prevWeaponData) => {
             if (prevWeaponData.isIssued !== isIssued) {
@@ -213,7 +223,37 @@ function NewArmoury({title, C_type}) {
                             />
                         </Form.Group>
                     </Col>
-                    <Col md={4}>
+                  
+                    <Col md={6}>
+                        <Form.Group controlId="formLastAuditBy">
+                            <Form.Label>Last Audit By</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter last audit by"
+                                name="lastAuditBy"
+                                value={weaponData.lastAuditBy}
+                                onChange={handleInputChange}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col md={6}>
+                        <Form.Group controlId="formUpcomingMaintenanceDate">
+                            <Form.Label>Upcoming Maintenance Date</Form.Label>
+                            <Form.Control
+                                type="date"
+                                name="upcomingMaintenanceDate"
+                                value={weaponData.upcomingMaintenanceDate}
+                                onChange={handleInputChange}
+                            />
+                        </Form.Group>
+                    </Col>
+
+                    {
+                        isFixed?(
+                            <>
+                            <h1 className="fs-4 mt-4">Officer/Men Details</h1>
+                            <hr />
+                              <Col md={4}>
                         <Form.Group controlId="formRank">
                             <Form.Label>Officer/Men Rank</Form.Label>
                             <Form.Control
@@ -249,29 +289,30 @@ function NewArmoury({title, C_type}) {
                             />
                         </Form.Group>
                     </Col>
-                    <Col md={6}>
-                        <Form.Group controlId="formLastAuditBy">
-                            <Form.Label>Last Audit By</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter last audit by"
-                                name="lastAuditBy"
-                                value={weaponData.lastAuditBy}
-                                onChange={handleInputChange}
-                            />
-                        </Form.Group>
-                    </Col>
-                    <Col md={6}>
-                        <Form.Group controlId="formUpcomingMaintenanceDate">
-                            <Form.Label>Upcoming Maintenance Date</Form.Label>
-                            <Form.Control
-                                type="date"
-                                name="upcomingMaintenanceDate"
-                                value={weaponData.upcomingMaintenanceDate}
-                                onChange={handleInputChange}
-                            />
-                        </Form.Group>
-                    </Col>
+                    <div className="col-md-6">
+                    <label htmlFor="" className="form-lable">Select Officer/Men Rank</label>
+                        <select name="" className='form-control' id="">
+                                        
+                                        <option value="">Select Officers/Men Rank</option>
+                                        <option value="type1">PC</option>
+                                        <option value="type2">HC</option>
+                                        <option value="">ARSI/ASI</option>
+                                        <option value="">RSI/PSI</option>
+                                        <option value="">RPI/PI</option>
+                                        <option value="">AC/DySP</option>
+                                        <option value="">DC/Addl.SP</option>
+                                        <option value="">Commandant/SP</option>
+                        </select>
+                    </div>
+                            </>
+                        ):(null)
+                    }
+                    <div className="col-md-12">
+                        <label htmlFor="">Remarks</label>
+                        <textarea name="" className='form-control' id="" placeholder='Enter Remarks'></textarea>
+                    </div>
+                    <label htmlFor="">Upload Documents</label>
+                    <input type="file" className='form-control' />
 
                    
                 </Row>

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Modal, Tab, Tabs } from 'react-bootstrap'; // For modal popups (Success/Error)
+import { Modal, Offcanvas, Tab, Tabs } from 'react-bootstrap'; // For modal popups (Success/Error)
 import './style.css'
 import Loading from '../../components/loading/Loading';
+import Scan from './Scan';
 // import Loading from '../../components/loading/Loading';
 
 function MainIssue() {
@@ -21,6 +22,7 @@ function MainIssue() {
   const [isLoading, setIsLoading] = useState(true);
   const [ammunitionData, setAmmunitionData] = useState([])
   const navigate = useNavigate();
+  const [showScan, setShowScan] = useState(false)
 
   // Fetch officers and weapons from the backend
   useEffect(() => {
@@ -142,6 +144,21 @@ function MainIssue() {
   }
   return (
     <div className="container-fluid p-3">
+      <div className="d-flex align-items-center justify-content-end gap-4  border-bottom mb-3">
+         {/* Issue Button */}
+      <button
+        className="red-btn mb-4"
+        onClick={handleIssueWeapons}
+      >
+        Issue Selected Weapons
+      </button>
+      <button
+        className="btn btn-success mb-4 rounded-1"
+        onClick={()=>setShowScan(true)}
+      >
+      Scan & Issue
+      </button>
+      </div>
       {/* <h3 className="text-white mb-4 border-bottom border-light pb-3">Issue Weapons to Officer</h3> */}
 
       <div className="row">
@@ -380,13 +397,7 @@ function MainIssue() {
       {/* Selected Weapons */}
      
     
-      {/* Issue Button */}
-      <button
-        className="red-btn mt-3"
-        onClick={handleIssueWeapons}
-      >
-        Issue Selected Weapons
-      </button>
+     
 
       {/* Success/Error Modal */}
       <Modal show={showModal} onHide={() => setShowModal(false)} centered>
@@ -400,6 +411,15 @@ function MainIssue() {
           <button className="btn btn-secondary" onClick={() => setShowModal(false)}>Close</button>
         </Modal.Footer>
       </Modal>
+
+      <Offcanvas show={showScan} onHide={()=>setShowScan(false)} placement='bottom'>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Scan and Issue</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+           <Scan/>
+        </Offcanvas.Body>
+      </Offcanvas>
     </div>
   );
 }
